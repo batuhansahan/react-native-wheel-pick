@@ -1,18 +1,18 @@
-import React, { PureComponent } from 'react';
-import { DatePickerIOS } from 'react-native';
-import PropTypes from 'prop-types';
+import { DatePickerIOS } from "@react-native-community/datetimepicker";
+import PropTypes from "prop-types";
+import React, { PureComponent } from "react";
 
 export default class DatePicker extends PureComponent {
   static propTypes = {
     date: PropTypes.instanceOf(Date),
     maximumDate: PropTypes.instanceOf(Date),
     minimumDate: PropTypes.instanceOf(Date),
-    mode: PropTypes.oneOf(['date', 'time', 'datetime']),
+    mode: PropTypes.oneOf(["date", "time", "datetime"]),
     onDateChange: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
-    mode: 'date',
+    mode: "date",
     date: new Date(),
   };
 
@@ -31,17 +31,17 @@ export default class DatePicker extends PureComponent {
   }
 
   componentDidMount() {
-    this.setState({ date: this.props.date })
+    this.setState({ date: this.props.date });
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.date !== prevProps.date) {
-      this.setState({ date: this.props.date })
+      this.setState({ date: this.props.date });
     }
   }
 
   onDateChange = (date) => {
     this.setState({ date });
     this.props.onDateChange(date);
-  }
+  };
 }
